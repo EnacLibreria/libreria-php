@@ -1,7 +1,6 @@
 <?php
 
 include("../Clases/Conexion/ClaseConexion.php");
-error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 
 class BackOfficeDAO
 {
@@ -33,7 +32,7 @@ class BackOfficeDAO
 					$arregloMerced[] = $row['can1_obr'];
 					$arregloTemas[] = $row['tem1_obr'].'-'.$row['tem2_obr'].'-'.$row['tem3_obr'].'-'.$row['tem4_obr'];
 		}
-/*
+
 		$oLibros->setCodigoLibros($arregloCodigos);
 		$oLibros->setTitulo($arregloTitulos);
 		$oLibros->setAutor($arregloAutores);
@@ -512,67 +511,6 @@ function limpiar_caracteres_especiales($var) {
 			return $var;
 	}
 
-
-			function setImagen($var)
-		{
-			for($i=0; $i < sizeof($var['data']); $i++)
-			{
-				for($j=0; $j < 1; $j++)
-				{ 
-					$imagen ='../images/libros/'.$var['data'][$i][0].'.jpg';
-					$imagen2 ='../images/libros2/'.$var['data'][$i][0].'.jpg';
-					$imagen3 ='../images/libros/'.$var['data'][$i][0].'.JPG';
-					$imagen4 ='../images/libros2/'.$var['data'][$i][0].'.JPG';
-
-						if (!is_array(@getimagesize($imagen)))
-						{
-							if (!is_array(@getimagesize($imagen2)))
-							{
-								if (!is_array(@getimagesize($imagen3)))
-								{
-									if (!is_array(@getimagesize($imagen4)))
-									{
-										$imagenFinal ="";
-									}
-									else
-									{
-										$imagenFinal = $imagen4;
-									}
-								}
-								else
-								{
-									$imagenFinal = $imagen3;
-								}
-							}
-							else
-							{
-								$imagenFinal = $imagen2;
-							}
-						}
-						else									
-						{
-							$imagenFinal = $imagen;
-						}
-					$imagen1 = $imagenFinal;
-				}
-			
-			$var['data'][$i][9] = $imagenFinal;
-
-			if(isset($var['data'][$i][9]))
-			{
-				if(strlen($var['data'][$i][9]) > 3)
-				{
-					$var['data'][$i][9] = '<img src="http://www.lesbricolanges.com/images/alert-success-ico.png"  width="15px" height="15px"/>';
-				}
-				else
-				{
-					$var['data'][$i][9] = '<img src="http://releases.strategoxt.org/images/failure.gif" width="10px" height="10px"/>';
-				}
-			}
-			
-			}
-			return $var;
-		}
 
 			function setFicha($var)
 		{
